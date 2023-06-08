@@ -15,7 +15,9 @@ a {
   overflow: hidden;
   transform: translate3d(0, 0, 0);
 }
-
+ul#slider li div img {
+  object-fit: contain;
+}
 .tech-slideshow > div {
   height: 200px;
   width: 2526px;
@@ -27,21 +29,18 @@ a {
   transform: translate3d(0, 0, 0);
 }
 .tech-slideshow .mover-1 {
-  animation: moveSlideshow 12s linear infinite;
+  animation: moveSlideshow 20s linear infinite;
 }
 .tech-slideshow .mover-2 {
   opacity: 0;
   transition: opacity 0.5s ease-out;
   background-position: 0;
-  animation: moveSlideshow 15s linear infinite;
-}
-.tech-slideshow:hover .mover-2 {
-  opacity: 1;
+  animation: moveSlideshow 20s linear infinite;
 }
 
 @keyframes moveSlideshow {
   100% {
-    transform: translateX(-66.6666%);
+    transform: translateX(-85.6666%);
   }
 }
 .fa-bars:before {
@@ -143,12 +142,6 @@ a {
 #previous {
   left: -50px;
   border-radius: 0px 7px 7px 7px;
-}
-#counter {
-  top: 30px;
-  right: 35px;
-  width: auto;
-  position: absolute;
 }
 
 #slider-wrap.active #next {
@@ -364,11 +357,78 @@ section.porque-nos > .center > p {
   margin-right: 2%;
   padding: 10px 20px;
 }
-@media (max-width: 1080px) {
+
+@media (max-width: 480px) {
+  #slider-wrap {
+    width: 92%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #pagination-wrap {
+    display: none;
+  }
+
+  .logo-menu {
+    position: relative;
+    left: 10px;
+  }
+
   .box-diferenciais {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .box-diferenciais h3,
+  p {
     text-align: center;
   }
+
+  div#medias-sociais a img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .lista-beneficios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lista-beneficios img {
+    position: relative;
+    bottom: 10px;
+  }
+
+  .lista-beneficios h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .center {
+    padding: 0px;
+  }
+
+  .items-menu-mobile i {
+    color: rgb(40, 40, 40);
+    position: relative;
+    top: 15px;
+    z-index: 2;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  section.contato h1 {
+    text-align: center;
+    font-size: 39px;
+  }
 }
+/*////*/
 
 .box-diferenciais h3 {
   font-size: 28px;
@@ -493,11 +553,40 @@ section.depoimentos > h1 {
   margin-left: -27px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .container-slider {
     display: flex;
     align-items: center;
     flex-direction: column;
+  }
+
+  .box-diferenciais {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .box-diferenciais h3,
+  p {
+    text-align: center;
+  }
+
+  .lista-beneficios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lista-beneficios img {
+    position: relative;
+    bottom: 10px;
+  }
+
+  .lista-beneficios h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
   }
 }
 
