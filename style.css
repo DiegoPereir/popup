@@ -40,7 +40,11 @@ ul#slider li div img {
 
 @keyframes moveSlideshow {
   100% {
+<<<<<<< HEAD
     transform: translateX(-67.7%);
+=======
+    transform: translateX(-85.6666%);
+>>>>>>> 794ed7297daef104781819d5de3de549dd51ec62
   }
 }
 .fa-bars:before {
@@ -427,6 +431,7 @@ section.porque-nos > .center > p {
     text-align: center;
     font-size: 39px;
   }
+<<<<<<< HEAD
 
   .items-menu-footer{
     display: flex;
@@ -459,6 +464,8 @@ section.porque-nos > .center > p {
     left: 35px;
   }
 
+=======
+>>>>>>> 794ed7297daef104781819d5de3de549dd51ec62
 }
 /*////*/
 
