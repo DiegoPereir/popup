@@ -150,6 +150,31 @@
     width: 100%;
     font-size: 90px;
   }
+  footer{
+    background-color: rgba(37, 90,255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  footer row div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Style for the social media icons */
+.text-white-icon {
+  color: white;
+  margin-right: 15px; /* Distance between icons */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.text-white-icon:last-child {
+  margin-right: 0; /* Remove margin for the last icon */
+}
+
+.text-white-icon:hover {
+  transform: translateY(-2px); /* Move the icon slightly upwards on hover */
+}
 
   /*btns*/
   .btns {
@@ -249,9 +274,17 @@
   }
 
   .menu {
+    position: fixed;
     display: flex;
     width: 100%;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+    top: 0;
+    padding: 5px 15%;
   }
+  .menu.scrolled {
+    background-color: rgba(37, 90,255, 1);
+}
 
   .logo-menu {
     width: 50%;
@@ -415,6 +448,7 @@
     height: 100px;
   }
 div#medias-sociais a{
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 50%;
   padding: 15px;
@@ -829,12 +863,6 @@ div#medias-sociais a{
     color: white;
     font-size: 18px;
     border-radius: 10px;
-  }
-
-  footer {
-    padding: 10px 0;
-    background-color: #255aff;
-    color: white;
   }
 
   .text-footer {

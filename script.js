@@ -1,3 +1,12 @@
+window.addEventListener('scroll', function() {
+  var menu = document.querySelector('.menu');
+  if (window.scrollY > 90) {
+      menu.classList.add('scrolled');
+  } else {
+      menu.classList.remove('scrolled');
+  }
+});
+
 document.getElementById('menuIcon').addEventListener('click', function() {
   if (this.classList.contains('fa-bars')) {
       this.classList.remove('fa-bars');
