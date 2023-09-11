@@ -1,278 +1,247 @@
 <html>
 
-    <head>
+<head>
 
-        <title>PoPuP</title>
+    <title>PoPuP</title>
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
 
-    
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
+<body>
 
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
-
-        <link href="style.css" rel="stylesheet" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    </head>
-
-    <body>
-        
-        <section class="main">
-            <div class="center">
-                <div class="menu">
-                    <div class="logo-menu">
-                        <a href="/">Agência <br> <span class="logo-text" style="color: #52E9D6;">pop</span><span class="logo-text" style="color: #94FF49;">up</span></a>
-                    </div>
-                    <div class="items-menu">
+    <section class="main">
+        <div class="center">
+            <div class="menu">
+                <div class="logo-menu">
+                    <a href="/">Agência <br> <span class="logo-text" style="color: #52E9D6;">pop</span><span
+                            class="logo-text" style="color: #94FF49;">up</span></a>
+                </div>
+                <div class="items-menu">
+                    <a href="#">Início</a>
+                    <a href="#pq-nos">Porque nós?</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a class="contact-btn" href="#contato">Entre em contato</a>
+                </div>
+                <div class="items-menu-mobile" id="itens-menu-mobile">
+                    <i class="fa fa-bars" aria-hidden="true" id="menuIcon"></i>
+                    <div class="menu-mobile">
                         <a href="#">Início</a>
                         <a href="#pq-nos">Porque nós?</a>
                         <a href="#depoimentos">Depoimentos</a>
                         <a class="contact-btn" href="#contato">Entre em contato</a>
                     </div>
-                    <div class="items-menu-mobile" id="itens-menu-mobile">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                        <div class="menu-mobile">
-                            <a href="#">Início</a>
-                            <a href="#pq-nos">Porque nós?</a>
-                            <a href="#depoimentos">Depoimentos</a>
-                        </div>
-                    </div>      
-                </div><!--Div Menu-->
-                <div class="mockup">    
-                    <h2>Promova experiencia aos seu Clientes</h2>
-                    <br/>
-                    <p>E veja resultados exprecivos dia após dia</p>
-                    <br/>
-                    <div id="mockup-div" style="display: none;">
-                        <div data-slide="slide" class="slide">
-                        <div class="slide-items">
-                        <img src="./img/post8.png" alt="Img 1">
-                        <img src="./img/post9.png" alt="Img 1">
+                </div>
+            </div><!--Div Menu-->
+            <div class="mockup">
+                <h2>Promova experiencia aos seu Clientes</h2>
+                <br />
+                <p>E veja resultados exprecivos dia após dia</p>
 
-
-                        </div>
-                        <nav class="slide-nav">
-                        <div class="slide-thumb"></div>
-                        <button class="slide-prev">Anterior</button>
-                        <button class="slide-next">Próximo</button>
-                        </nav>
+            </div><!--mokup-->
+            <div id="carouselExampleRide" class="carousel slide" style="max-width: none;" data-bs-ride="true">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/post1.png" class="d-block w-100 carousel-image" alt="...">
                     </div>
+                    <div class="carousel-item">
+                        <img src="img/post2.png" class="d-block w-100 carousel-image" alt="...">
                     </div>
-                </div><!--mokup-->
-                <div id="wrapper">
-   
-      <div id="slider-wrap">
-          <ul id="slider">
-             <li data-color="000">
-                <div>
-                    <img src="img/post5.png" alt="" class="img-slide-show">
-                </div>                
-                <i class="fa"></i>
-             </li>
-             
-             <li data-color="000">
-                <div>
-                    <img src="img/post2.png" alt="" class="img-slide-show">
+                    <div class="carousel-item">
+                        <img src="img/post3.png" class="d-block w-100 carousel-image" alt="...">
+                    </div>
                 </div>
-                <i class="fa"></i>
-             </li>
-             
-             <li data-color="000">
-                <div>
-                    <img src="img/post8.png" alt="" class="img-slide-show">
-                    
-                </div>
-                <i class="fa"></i>
-             </li>
-             
-             <li data-color="000">
-                <div>
-                    <img src="img/post7.png" alt="" class="img-slide-show">
-                </div>
-                <i class="fa"></i>
-             </li>
-             
-             <li data-color="000">
-                <div>
-                    <img src="img/post6.png" alt="" class="img-slide-show">
-                   
-                </div>
-                <i class="fa"></i>
-             </li>
-             
-             
-          </ul>
-          
-           <!--controls-->
-          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-          
-          <div id="pagination-wrap">
-            <ul>
-            </ul>
-          </div>
-          <!--controls-->  
-                 
-      </div>
-  
-   </div>
-            </div><!--center-->
-        </section><!--main-->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                    data-bs-slide="prev">
+                    <div class="bg-circle">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </div>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                    data-bs-slide="next">
+                    <div class="bg-circle">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </div><span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
-        <section class="Marcas">
-            <h2>Nossas redes sociais!</h2>
-            <div class="center">
-                <div id="medias-sociais">
-                    <a href="https://www.behance.net/agenciapopup" target="_blank">
-                        <img src="/img/behance.png" alt="Behance"/>
-                    </a>
-    
-                    <a href="https://www.instagram.com/agenciapopup/" target="_blank">
-                        <img src="img/insta.webp" alt="Instagram">
-                    </a>
-    
+        </div><!--center-->
+    </section><!--main-->
+
+    <section class="Marcas">
+        <h2>Nossas redes sociais!</h2>
+        <div class="center">
+            <div id="medias-sociais">
+                <a href="https://www.behance.net/agenciapopup" target="_blank">
+                    <img src="/img/behance.png" alt="Behance" />
+                </a>
+
+                <a href="https://www.instagram.com/agenciapopup/" target="_blank">
+                    <img src="img/insta.webp" alt="Instagram">
+                </a>
+
+            </div>
+
+        </div><!--center-->
+    </section><!--marcas-->
+
+    <section class="porque-nos" id="pq-nos">
+        <div class="center">
+            <h2>Por Que Nós ?</h2>
+            <p>Uma experiência incrível para seus clientes, resultados espetaculares para sua empresa.</p>
+
+            <div class="diferenciais">
+                <div class="box-diferenciais">
+                    <img src="img/ICONE1.png" />
+                    <h3>Planejamento impecável</h3>
+                    <p>Conte com a Agência Bold como sua parceira no planejamento de seus projetos, conteúdos,
+                        campanhas, estratégias. Nossos profissionais altamente qualificados estão preparados para
+                        qualquer desafio.</p>
+                </div>
+                <div class="box-diferenciais">
+                    <img src="img/ICONE2.png" />
+                    <h3>Pague pelos resultados</h3>
+                    <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de
+                        ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.
+                    </p>
+                </div>
+                <div class="box-diferenciais">
+                    <img src="img/ICONE3.png" />
+                    <h3>Suporte e acompanhamento</h3>
+                    <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de
+                        ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.
+                    </p>
                 </div>
 
-            </div><!--center-->
-        </section><!--marcas-->
+            </div><!--Diferenciais-->
+        </div><!--center-->
+    </section><!--pequenos-->
 
-        <section class="porque-nos" id="pq-nos">
-            <div class="center">
-                <h2>Por Que Nós ?</h2>
-                <p>Uma experiência incrível para seus clientes, resultados espetaculares para sua empresa.</p>
+    <section class="cta">
 
-                <div class="diferenciais">
-                    <div class="box-diferenciais">
-                        <img src="img/ICONE1.png" />
-                        <h3>Planejamento impecável</h3>
-                        <p>Conte com a Agência Bold como sua parceira no planejamento de seus projetos, conteúdos, campanhas, estratégias. Nossos profissionais altamente qualificados estão preparados para qualquer desafio.</p>
-                    </div>
-                    <div class="box-diferenciais">
-                        <img src="img/ICONE2.png" />
-                        <h3>Pague pelos resultados</h3>
-                        <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.</p>
-                    </div>
-                    <div class="box-diferenciais">
-                        <img src="img/ICONE3.png" />
-                        <h3>Suporte e acompanhamento</h3>
-                        <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.</p>
-                    </div>
+        <h2>Vamos Começar Seu Projeto</h2>
+        <h4>fale agora mesmo com um de nossos Consultore</h4>
+        <a href="#contato">Entrar em contato</a>
 
-                </div><!--Diferenciais-->
-                </div><!--center-->
-        </section><!--pequenos-->
-        
-        <section class="cta">
-       
-                <h2>Vamos Começar Seu Projeto</h2>
-                <h4>fale agora mesmo com um de nossos Consultore</h4>
+    </section><!--CTA-->
+
+
+    <section class="beneficios">
+        <div style="max-width: 1280px;" class="center">
+            <div class="lista-beneficios">
+                <h1>Benefícios para Você</h1>
+                <br />
+                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                        desempenho do seu projeto ou campanha.</span></p>
+                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                        desempenho do seu projeto ou campanha.</span></p>
+                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                        desempenho do seu projeto ou campanha.</span></p>
                 <a href="#contato">Entrar em contato</a>
-          
-        </section><!--CTA-->
+            </div>
+            <div class="img-beneficios">
+                <img src="img/popup.png" />
 
 
-        <section class="beneficios">
-            <div style="max-width: 1280px;" class="center">
-                <div class="lista-beneficios">
-                    <h1>Benefícios para Você</h1>
-                    <br/>
-                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o desempenho do seu projeto ou campanha.</span></p>
-                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o desempenho do seu projeto ou campanha.</span></p>
-                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o desempenho do seu projeto ou campanha.</span></p>
-                    <a href="#contato">Entrar em contato</a>
-                </div>
-                <div class="img-beneficios">
-                    <img src="img/popup.png"/>
+            </div>
+        </div><!--center-->
+    </section><!--benefios-->
 
-
-                </div>
-            </div><!--center-->
-        </section><!--benefios-->
-
-        <section class="depoimentos" id="depoimentos">
-            <h1>Nossa Equipe</h1>
+    <section class="depoimentos" id="depoimentos">
+        <h1>Nossa Equipe</h1>
         </br>
-            <div class="tech-slideshow">
-             <div class="mover-1"></div>
-             <div class="mover-2"></div>
-            </div>
+        <div class="tech-slideshow">
+            <div class="mover-1"></div>
+            <div class="mover-2"></div>
+        </div>
 
-        </section>
+    </section>
 
-        <section class="Contato" id="contato">
-            <h1>Entre Em contato</h1>
-            <div style="max-width: 900px;" class="center">
-                
-                <form action="#">
-                    <div class="fields">
-                        <div class="field name">
-                            <input type="text" id="nome" placeholder="Nome" required="">
-                        </div>
+    <section class="Contato" id="contato">
+        <h1>Entre Em contato</h1>
+        <div style="max-width: 900px;" class="center">
+            <form action="#" onsubmit="enviarMensagemWhatsApp(); return false;">
+                <div class="fields">
+                    <div class="field name">
+                        <input type="text" id="nome" placeholder="Nome" required>
                     </div>
-                    <div class="field">
-                        <div class="field email">
-                            <input type="email" id="email" placeholder="Email" required="">
-                        </div>
-                        <div class="field textarea">
-                            <textarea id="mensagem" cols="30" rows="10" placeholder="Escrever...." required=""></textarea>
-                        </div>
-                        <div class="button">
-                            <button type="button" id="enviar" onclick="enviarMensagemWhatsApp()">Enviar</button>
-                        </div>
+                </div>
+                <div class="field">
+                    <div class="field email">
+                        <input type="email" id="email" placeholder="Email" required>
                     </div>
-                </form>
-            </div>
+                    <div class="field textarea">
+                        <textarea id="mensagem" cols="30" rows="10" placeholder="Escrever...." required></textarea>
+                    </div>
+                    <div class="button">
+                        <button type="submit" id="enviar">Enviar</button>
+                    </div>
+                </div>
+            </form>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <footer>
-            <div class="center">
-
-<<<<<<< HEAD
-                <div class="items-menu-footer">
-=======
+    <footer>
+        <div class="center">
+            <div class="items-menu-footer">
                 <div class="items-menu">
->>>>>>> 794ed7297daef104781819d5de3de549dd51ec62
-                <a href="#">Início</a>
-                <a href="#pq-nos">Porque nós?</a>
-                <a href="#depoimentos">Depoimentos</a>
-                <a class="contact-btn" href="#contato">Entre em contato</a>
-                </div><!--Div Menu-->
+                    <a href="#">Início</a>
+                    <a href="#pq-nos">Porque nós?</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a class="contact-btn" href="#contato">Entre em contato</a>
+                </div>
             </div>
-        </footer>
+    </footer>
 
-        <script src="jquery.js"></script>
-        <script src="slick.min.js"></script>
-        <script>
-            $('.container-slider').slick({
-                dots: true,
-                arrows:false,
-                speed:1000,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                autoplay: true,
-                autoplaySpeed: 3000,
-                pauseOnHover:false,
-                responsive: [
-                            {
-                              breakpoint: 768,
-                              settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                              }
-                            }],
-                });
-        </script>
+    <script src="jquery.js"></script>
+    <script src="slick.min.js"></script>
+    <script>
+        $('.container-slider').slick({
+            dots: true,
+            arrows: false,
+            speed: 1000,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            pauseOnHover: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }],
+        });
+    </script>
 
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
 
 </html>

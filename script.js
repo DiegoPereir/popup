@@ -1,3 +1,15 @@
+document.getElementById('menuIcon').addEventListener('click', function() {
+  if (this.classList.contains('fa-bars')) {
+      this.classList.remove('fa-bars');
+      this.classList.add('fa-times');
+      document.body.style.overflow = 'hidden'; // Impede o scroll
+  } else {
+      this.classList.remove('fa-times');
+      this.classList.add('fa-bars');
+      document.body.style.overflow = 'auto'; // Permite o scroll
+  }
+});
+
 var menuBtn = document.querySelector("#itens-menu-mobile i");
 menuBtn.addEventListener("click", () => {
   let itemsMenu = document.querySelector(".menu-mobile");
