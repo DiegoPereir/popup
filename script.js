@@ -1,3 +1,187 @@
+
+
+
+
+
+
+let currentSlide = 0;
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let previousTranslate = 0;
+let autoSlideInterval;
+
+function move(direction) {
+    const slider = document.querySelector('.employee-slider');
+    const cards = document.querySelectorAll('.employee-card');
+    const cardWidth = cards[0].offsetWidth + 40;
+
+    currentSlide += direction;
+
+    if (currentSlide > cards.length - 3) {
+        currentSlide = 0;
+    } else if (currentSlide < 0) {
+        currentSlide = cards.length - 3;
+    }
+
+    const moveAmount = -(currentSlide * cardWidth);
+    slider.style.transform = `translateX(${moveAmount}px)`;
+    previousTranslate = moveAmount;
+}
+
+function startAutoSlide() {
+    if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+    }
+    autoSlideInterval = setInterval(() => {
+        move(1);
+    }, 2000); // Moverá o slider a cada 1 segundo
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+function resetAutoSlide() {
+    stopAutoSlide();
+    setTimeout(startAutoSlide, 3000); // Reinicia o deslizamento automático após 3 segundos
+}
+
+const slider = document.querySelector('.employee-slider');
+
+slider.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+});
+
+slider.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    startPosition = e.clientX;
+    slider.style.transition = 'none';
+    resetAutoSlide();
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const currentPosition = e.clientX;
+    currentTranslate = previousTranslate + currentPosition - startPosition;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+});
+
+slider.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.style.transition = 'transform 0.5s ease-out';
+    const movedBy = currentTranslate - previousTranslate;
+
+    const cardWidth = document.querySelector('.employee-card').offsetWidth + 40;
+    if (Math.abs(movedBy) > cardWidth / 2) {
+        if (movedBy > 0) {
+            move(-1);
+        } else {
+            move(1);
+        }
+    } else {
+        slider.style.transform = `translateX(${previousTranslate}px)`;
+    }
+});
+
+slider.addEventListener('mouseleave', () => {
+    if (isDragging) {
+        isDragging = false;
+        slider.style.transition = 'transform 0.5s ease-out';
+        const movedBy = currentTranslate - previousTranslate;
+
+        const cardWidth = document.querySelector('.employee-card').offsetWidth + 40;
+        if (Math.abs(movedBy) > cardWidth / 2) {
+            if (movedBy > 0) {
+                move(-1);
+            } else {
+                move(1);
+            }
+        } else {
+            slider.style.transform = `translateX(${previousTranslate}px)`;
+        }
+    }
+});
+
+slider.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    startPosition = e.touches[0].clientX;
+    slider.style.transition = 'none';
+    resetAutoSlide();
+});
+
+slider.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentPosition = e.touches[0].clientX;
+    currentTranslate = previousTranslate + currentPosition - startPosition;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+});
+
+slider.addEventListener('touchend', () => {
+    isDragging = false;
+    slider.style.transition = 'transform 0.5s ease-out';
+    const movedBy = currentTranslate - previousTranslate;
+
+    const cardWidth = document.querySelector('.employee-card').offsetWidth + 40;
+    if (Math.abs(movedBy) > cardWidth / 2) {
+        if (movedBy > 0) {
+            move(-1);
+        } else {
+            move(1);
+        }
+    } else {
+        slider.style.transform = `translateX(${previousTranslate}px)`;
+    }
+});
+
+document.querySelector('.arrow.left').addEventListener('click', resetAutoSlide);
+document.querySelector('.arrow.right').addEventListener('click', resetAutoSlide);
+
+// Iniciar o deslizamento automático quando a página carregar
+startAutoSlide();
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  var menuIcon = document.getElementById("menuIcon");
+  var menuMobile = document.querySelector(".items-menu-mobile .menu-mobile");
+
+  function toggleMenu() {
+      menuMobile.classList.toggle("show");
+      if (menuMobile.classList.contains("show")) {
+          menuIcon.classList.remove('fa-bars');
+          menuIcon.classList.add('fa-times');
+          document.body.style.overflow = 'hidden';
+      } else {
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+          document.body.style.overflow = 'auto';
+      }
+  }
+
+  menuIcon.addEventListener("click", toggleMenu);
+
+  var menuMobileLinks = menuMobile.querySelectorAll("a");
+  menuMobileLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+          menuMobile.classList.remove("show");
+          menuIcon.classList.remove('fa-times');
+          menuIcon.classList.add('fa-bars');
+          document.body.style.overflow = 'auto';
+      });
+  });
+});
+
 window.addEventListener('scroll', function() {
   var menu = document.querySelector('.menu');
   if (window.scrollY > 90) {
@@ -7,29 +191,6 @@ window.addEventListener('scroll', function() {
   }
 });
 
-document.getElementById('menuIcon').addEventListener('click', function() {
-  if (this.classList.contains('fa-bars')) {
-      this.classList.remove('fa-bars');
-      this.classList.add('fa-times');
-      document.body.style.overflow = 'hidden'; // Impede o scroll
-  } else {
-      this.classList.remove('fa-times');
-      this.classList.add('fa-bars');
-      document.body.style.overflow = 'auto'; // Permite o scroll
-  }
-});
-
-var menuBtn = document.querySelector("#itens-menu-mobile i");
-menuBtn.addEventListener("click", () => {
-  let itemsMenu = document.querySelector(".menu-mobile");
-  if (itemsMenu.classList.contains("show")) {
-    itemsMenu.classList.remove("show");
-    itemsMenu.classList.add("hide");
-  } else {
-    itemsMenu.classList.remove("hide");
-    itemsMenu.classList.add("show");
-  }
-});
 
 let inputText = document.querySelector("name");
 let inputEmail = document.querySelector("email");
