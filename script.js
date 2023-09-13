@@ -179,15 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-window.addEventListener('scroll', function() {
-  var menu = document.querySelector('.menu');
-  if (window.scrollY > 90) {
-      menu.classList.add('scrolled');
-  } else {
-      menu.classList.remove('scrolled');
-  }
-});
-
 
 let inputText = document.querySelector("name");
 let inputEmail = document.querySelector("email");
