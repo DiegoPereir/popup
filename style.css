@@ -112,10 +112,15 @@ a {
 }
 
 
+#carouselExampleRide{
+  margin-top: 110px;
 
+}
 .carousel-inner {
   width: 600px;
   height: auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .carousel-image {
@@ -597,6 +602,13 @@ section.porque-nos>.center>p {
 }
 
 @media (max-width: 480px) {
+  #medias-sociais a{
+    padding: 10px!important;
+  }
+  #medias-sociais a img {
+    width: 20px!important;
+    height: 20px!important;
+  }
   #slider-wrap {
     width: 92%;
     height: 400px;
@@ -854,6 +866,10 @@ section.depoimentos>h1 {
 }
 
 @media (max-width: 768px) {
+  #medias-sociais a img {
+    width: 30px!important;
+    height: 30px!important;
+  }
   footer p {
     font-size: 12px;
   }
