@@ -190,16 +190,19 @@ button.addEventListener("click", enviarMensagemWhatsApp);
 function enviarMensagemWhatsApp() {
   const nome = encodeURIComponent(document.getElementById("nome").value);
   const email = encodeURIComponent(document.getElementById("email").value);
-  const mensagem = encodeURIComponent(
-    document.getElementById("mensagem").value
-  );
+  const mensagem = encodeURIComponent(document.getElementById("mensagem").value);
   const numeroWhatsApp = "5588993106463";
 
-  const mensagemFormatada = `Nome: ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+  const mensagemFormatada = `nome: ${nome}%0A%0Aemail: ${email}%0A%0Amensagem: ${mensagem}`;
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemFormatada}`;
 
   window.open(urlWhatsApp, "_blank");
 }
+
+
+
+
+
 class SlideStories {
   constructor(id) {
     this.slide = document.querySelector(`[data-slide="${id}"]`);
