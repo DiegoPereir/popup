@@ -19,12 +19,14 @@ h2{
   overflow: hidden;
   position: relative;
   width: 80%;
+  height: fit-content;
   margin: 5% auto;
   z-index: 3;
 }
 
 .employee-slider {
   display: flex;
+  height: fit-content;
   transition: transform 0.5s ease-out;
   will-change: transform;
 }
@@ -32,7 +34,7 @@ h2{
 .employee-card {
   flex: 1;
   min-width: 30%;
-  height: 30vw;
+  height: 30%;
   margin: 0 20px;
   overflow: hidden;
   border-radius: 15px;
@@ -870,8 +872,8 @@ section.depoimentos>h1 {
 
 @media (max-width: 768px) {
   .carousel-inner {
-    width: auto;
-    height: 111vw;
+    width: 90vw;
+    height: auto;
   }
   #medias-sociais a img {
     width: 30px!important;
