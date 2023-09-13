@@ -1,15 +1,10 @@
-
-
-
-
-
-
 let currentSlide = 0;
 let isDragging = false;
 let startPosition = 0;
 let currentTranslate = 0;
 let previousTranslate = 0;
 let autoSlideInterval;
+let touchEventTriggered = false; // Adicionado para rastrear eventos de toque
 
 function move(direction) {
     const slider = document.querySelector('.employee-slider');
@@ -35,7 +30,7 @@ function startAutoSlide() {
     }
     autoSlideInterval = setInterval(() => {
         move(1);
-    }, 2000); // Moverá o slider a cada 1 segundo
+    }, 2000);
 }
 
 function stopAutoSlide() {
@@ -44,7 +39,7 @@ function stopAutoSlide() {
 
 function resetAutoSlide() {
     stopAutoSlide();
-    setTimeout(startAutoSlide, 3000); // Reinicia o deslizamento automático após 3 segundos
+    setTimeout(startAutoSlide, 3000);
 }
 
 const slider = document.querySelector('.employee-slider');
@@ -54,6 +49,7 @@ slider.addEventListener('dragstart', (e) => {
 });
 
 slider.addEventListener('mousedown', (e) => {
+    if (touchEventTriggered) return;
     e.preventDefault();
     isDragging = true;
     startPosition = e.clientX;
@@ -62,7 +58,7 @@ slider.addEventListener('mousedown', (e) => {
 });
 
 slider.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
+    if (touchEventTriggered || !isDragging) return;
     const currentPosition = e.clientX;
     currentTranslate = previousTranslate + currentPosition - startPosition;
     slider.style.transform = `translateX(${currentTranslate}px)`;
@@ -105,7 +101,8 @@ slider.addEventListener('mouseleave', () => {
 });
 
 slider.addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    touchEventTriggered = true;
+    e.stopPropagation();
     isDragging = true;
     startPosition = e.touches[0].clientX;
     slider.style.transition = 'none';
@@ -120,6 +117,7 @@ slider.addEventListener('touchmove', (e) => {
 });
 
 slider.addEventListener('touchend', () => {
+    touchEventTriggered = false;
     isDragging = false;
     slider.style.transition = 'transform 0.5s ease-out';
     const movedBy = currentTranslate - previousTranslate;
@@ -139,7 +137,6 @@ slider.addEventListener('touchend', () => {
 document.querySelector('.arrow.left').addEventListener('click', resetAutoSlide);
 document.querySelector('.arrow.right').addEventListener('click', resetAutoSlide);
 
-// Iniciar o deslizamento automático quando a página carregar
 startAutoSlide();
 
 
