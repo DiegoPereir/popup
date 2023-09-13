@@ -142,33 +142,43 @@ h2{
 }
 
 .carousel-inner {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: auto;
   border-radius: 10px;
   overflow: hidden;
+  margin: 0 auto; /* Centraliza o carrossel se for menor que a largura da tela */
 }
 
 .carousel-image {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;  /* Para Opera */
-  -webkit-object-fit: cover; /* Prefixo para Safari */
   object-fit: cover;
 }
 
-.carouselCenter {
-  display: -webkit-box;  /* Safari 6.1- */
-  display: -ms-flexbox;  /* IE 10 */
-  display: -webkit-flex; /* Safari 8+ */
-  display: flex;
-  -webkit-justify-content: center; /* Safari 8+ */
-  justify-content: center;
-  -webkit-align-items: center; /* Safari 8+ */
-  align-items: center;
-  width: 100%;
-  -webkit-justify-self: center; /* Safari 8+ */
-  justify-self: center;
+.carousel-control-prev, .carousel-control-next {
+  width: 50px;
 }
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+@media (max-width: 1080px) {
+  .carousel-inner {
+    max-width: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel
+}
+
+
 
 
 .bg-circle {
@@ -470,10 +480,7 @@ div#mockup-div {
     width: 80%;
   }
 
-  .carousel-inner {
-    width: 60vw;
-    height: auto;
-  }
+
 
   .items-menu {
 
@@ -897,10 +904,7 @@ section.depoimentos>h1 {
 }
 
 @media (max-width: 768px) {
-  .carousel-inner {
-    width: 90vw;
-    height: auto;
-  }
+
   #medias-sociais a img {
     width: 30px!important;
     height: 30px!important;
