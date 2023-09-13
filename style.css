@@ -9,6 +9,9 @@ a {
   text-decoration: none;
 }
 
+h2{
+  font-size: 32px!important;
+}
 
 .employee-gallery {
   display: flex;
@@ -91,6 +94,9 @@ a {
 
 /* Responsividade para dispositivos móveis */
 @media (max-width: 768px) {
+  h2{
+    font-size: 25px!important;
+  }
   .employee-card {
     min-width: 50%;
     /* Aumenta a largura mínima do cartão para dispositivos móveis */
@@ -418,6 +424,10 @@ div#mockup-div {
 }
 
 @media (max-width: 1080px) {
+  .lista-beneficios p{
+    flex-direction: column;
+    gap: 1px;
+  }
   .beneficios .center{
     box-shadow: none!important;
   }
@@ -533,11 +543,6 @@ section.marcas {
   align-items: center;
   flex-direction: column;
 }
-
-section.marcas h2 {
-  font-size: 32px;
-}
-
 div#medias-sociais {
   display: flex;
   align-items: center;
@@ -570,7 +575,6 @@ section.porque-nos {
 
 
 section.porque-nos>.center>h2 {
-  font-size: 32px;
   text-align: center;
   width: 100%;
 }
@@ -743,7 +747,6 @@ section.cta h4 {
 
 section.cta h2 {
   color: white;
-  font-size: 32px;
 }
 
 section.cta h4 {
@@ -866,6 +869,10 @@ section.depoimentos>h1 {
 }
 
 @media (max-width: 768px) {
+  .carousel-inner {
+    width: auto;
+    height: 111vw;
+  }
   #medias-sociais a img {
     width: 30px!important;
     height: 30px!important;
@@ -966,12 +973,8 @@ li.slick-active button {
 /* Fim Slick Slider*/
 
 section.contato {
-  padding: 10px 100px;
+  padding: 10px 5%;
   text-align: center;
-}
-
-section.contato h1 {
-  font-size: 32px;
 }
 
 section.contato form {
