@@ -1,15 +1,26 @@
+//COLOCAR UM BG NO MENU DEPOIS DE 90PX SCROLADOS PARA BAIXO------------------------------------------------------------------------------------------------------
+window.addEventListener('scroll', function() {
+  var menu = document.querySelector('.menu');
+  if (window.scrollY > 90) {
+      menu.classList.add('scrolled');
+  } else {
+      menu.classList.remove('scrolled');
+  }
+});
+
+//SLIDER CARD DOS FUNCIONARIOS---------------------------------------------------------------------------------------------------------------------------------
 let currentSlide = 0;
 let isDragging = false;
 let startPosition = 0;
 let currentTranslate = 0;
 let previousTranslate = 0;
 let autoSlideInterval;
-let touchEventTriggered = false; // Adicionado para rastrear eventos de toque
+let touchEventTriggered = false;
 
 function move(direction) {
     const slider = document.querySelector('.employee-slider');
     const cards = document.querySelectorAll('.employee-card');
-    const cardWidth = cards[0].offsetWidth + 40;
+    const cardWidth = cards[0].offsetWidth + 5;
 
     currentSlide += direction;
 
@@ -140,15 +151,7 @@ document.querySelector('.arrow.right').addEventListener('click', resetAutoSlide)
 startAutoSlide();
 
 
-
-
-
-
-
-
-
-
-
+//MENU HAMBURGUER----------------------------------------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
   var menuIcon = document.getElementById("menuIcon");
   var menuMobile = document.querySelector(".items-menu-mobile .menu-mobile");
@@ -179,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
+//MENSAGEM ZAP ---------------------------------------------------------------------------------------------------------------------------------------------------
 let inputText = document.querySelector("name");
 let inputEmail = document.querySelector("email");
 let inputMsg = document.querySelector("mensagem");
@@ -197,173 +200,4 @@ function enviarMensagemWhatsApp() {
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemFormatada}`;
 
   window.open(urlWhatsApp, "_blank");
-}
-
-
-
-
-
-class SlideStories {
-  constructor(id) {
-    this.slide = document.querySelector(`[data-slide="${id}"]`);
-    this.active = 0;
-    this.init();
-  }
-
-  activeSlide(index) {
-    this.active = index;
-    this.items.forEach((item) => item.classList.remove("active"));
-    this.items[index].classList.add("active");
-    this.thumbItems.forEach((item) => item.classList.remove("active"));
-    this.thumbItems[index].classList.add("active");
-    this.autoSlide();
-  }
-
-  prev() {
-    if (this.active > 0) {
-      this.activeSlide(this.active - 1);
-    } else {
-      this.activeSlide(this.items.length - 1);
-    }
-  }
-
-  next() {
-    if (this.active < this.items.length - 1) {
-      this.activeSlide(this.active + 1);
-    } else {
-      this.activeSlide(0);
-    }
-  }
-
-  addNavigation() {
-    const nextBtn = this.slide.querySelector(".slide-next");
-    const prevBtn = this.slide.querySelector(".slide-prev");
-    nextBtn.addEventListener("click", this.next);
-    prevBtn.addEventListener("click", this.prev);
-  }
-
-  addThumbItems() {
-    this.items.forEach(() => (this.thumb.innerHTML += `<span></span>`));
-    this.thumbItems = Array.from(this.thumb.children);
-  }
-
-  autoSlide() {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(this.next, 5000);
-  }
-
-  init() {
-    this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
-    this.items = this.slide.querySelectorAll(".slide-items > *");
-    this.thumb = this.slide.querySelector(".slide-thumb");
-    this.addThumbItems();
-    this.activeSlide(0);
-    this.addNavigation();
-  }
-}
-
-new SlideStories("slide");
-
-//current position
-var pos = 0;
-//number of slides
-var totalSlides = $("#slider-wrap ul li").length;
-//get the slide width
-var sliderWidth = $("#slider-wrap").width();
-
-$(document).ready(function () {
-  /*****************
-   BUILD THE SLIDER
-  *****************/
-  //set width to be 'x' times the number of slides
-  $("#slider-wrap ul#slider").width(sliderWidth * totalSlides);
-
-  //next slide
-  $("#next").click(function () {
-    slideRight();
-  });
-
-  //previous slide
-  $("#previous").click(function () {
-    slideLeft();
-  });
-
-  /*************************
-   //*> OPTIONAL SETTINGS
-  ************************/
-  //automatic slider
-  var autoSlider = setInterval(slideRight, 3000);
-
-  //for each slide
-  $.each($("#slider-wrap ul li"), function () {
-    //set its color
-    var c = $(this).attr("data-color");
-    $(this).css("background", c);
-
-    //create a pagination
-    var li = document.createElement("li");
-    $("#pagination-wrap ul").append(li);
-  });
-
-  //counter
-  countSlides();
-
-  //pagination
-  pagination();
-
-  //hide/show controls/btns when hover
-  //pause automatic slide when hover
-  $("#slider-wrap").hover(
-    function () {
-      $(this).addClass("active");
-      clearInterval(autoSlider);
-    },
-    function () {
-      $(this).removeClass("active");
-      autoSlider = setInterval(slideRight, 3000);
-    }
-  );
-}); //DOCUMENT READY
-
-/***********
- SLIDE LEFT
-************/
-function slideLeft() {
-  pos--;
-  if (pos == -1) {
-    pos = totalSlides - 1;
-  }
-  $("#slider-wrap ul#slider").css("left", -(sliderWidth * pos));
-
-  //*> optional
-  countSlides();
-  pagination();
-}
-
-/************
- SLIDE RIGHT
-*************/
-function slideRight() {
-  pos++;
-  if (pos == totalSlides) {
-    pos = 0;
-  }
-  $("#slider-wrap ul#slider").css("left", -(sliderWidth * pos));
-
-  //*> optional
-  countSlides();
-  pagination();
-}
-
-/************************
- //*> OPTIONAL SETTINGS
-************************/
-function countSlides() {
-  $("#counter").html(pos + 1 + " / " + totalSlides);
-}
-
-function pagination() {
-  $("#pagination-wrap ul li").removeClass("active");
-  $("#pagination-wrap ul li:eq(" + pos + ")").addClass("active");
 }
