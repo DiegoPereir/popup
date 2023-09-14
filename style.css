@@ -247,6 +247,7 @@ footer .redesSociais .text-white-icon:hover {
 }
 
 .logo-menu {
+  white-space: nowrap;
   width: 50%;
   z-index: 9999;
 }
