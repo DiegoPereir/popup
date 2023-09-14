@@ -315,9 +315,8 @@ footer .redesSociais .text-white-icon:hover {
   background-color: #0a2d97;
 }
 
-
 .marcas {
-  background-color: #d8d8d843;
+  background-color: var(--cor-principal);
   padding: 100px 0;
   display: flex;
   justify-content: center;
@@ -633,6 +632,10 @@ section.contato form {
   margin: 5px;
   border-radius: 3px;
   overflow: hidden;
+}
+
+.col-md-4:nth-child(2) p{
+  font-family: Arial, Helvetica, sans-serif!important;
 }
 
 .slide-thumb>span.active::after {

@@ -41,10 +41,9 @@
     <section class="main">
         <div class="center">
             <div class="menu">
-                <div class="logo-menu">
-                    <a href="/">
-                        <span class="logo-text" style="color: #52E9D6;">pop</span>
-                        <span class="logo-text" style="color: #94FF49;">up</span></a>
+                <div class="col-md-4 d-flex justify-content-start align-items-center" style="width: 50%;">
+                    <a href="/"><span class="logo-text" style="color: #52E9D6; font-weight: bold;">pop</span><span class="logo-text"
+                            style="color: #94FF49; font-weight: bold;">up</span></a>
                 </div>
                 <div class="items-menu">
                     <a href="#">Início</a>
@@ -83,14 +82,14 @@
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
                     <div class="bg-circle">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span aria-hidden="true" style="color: rgba(91, 91, 91, 0.619);">&#10094;</span>
                     </div>
                     <span class="visually-hidden">Previous</span>
                 </button>
 
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
                     <div class="bg-circle">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span aria-hidden="true" style="color: rgba(133, 133, 133, 0.477);">&#10095;</span>
                     </div>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -240,7 +239,7 @@
 
                 <!-- Copyright Column -->
                 <div class="col-md-4 d-flex justify-content-center align-items-end"
-                    style="color: white;white-space: nowrap; order: 2; font-family: Raleway, sans-serif;">
+                    style="color: white;white-space: nowrap; order: 2;">
                     <p>&copy; 2023 PoPuP | Todos os direitos reservados </p>
                 </div>
 
@@ -264,28 +263,6 @@
 
     <script src="jquery.js"></script>
     <script src="slick.min.js"></script>
-    <script>
-        $('.container-slider').slick({
-            dots: true,
-            arrows: false,
-            speed: 1000,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            pauseOnHover: false,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }],
-        });
-    </script>
-
-
     <script src="script.js"></script>
 </body>
 
