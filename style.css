@@ -93,13 +93,13 @@ h3 {
 .gallery__item:nth-child(1) {
   left: 0;
   z-index: 1;
-  transform: translateX(-60%) scale(.8);
+  transform: translateX(-55%) scale(.8);
 }
 
 .gallery__item:nth-child(2) {
   left: 0;
   z-index: 2;
-  transform: translateX(-30%) scale(.8);
+  transform: translateX(-27.5%) scale(.8);
 }
 
 .gallery__item:nth-child(3) {
@@ -111,13 +111,13 @@ h3 {
 .gallery__item:nth-child(4) {
   left: 100%;
   z-index: 2;
-  transform: translateX(-70%) scale(.8);
+  transform: translateX(-72.5%) scale(.8);
 }
 
 .gallery__item:nth-child(n+5) {
   left: 100%;
   z-index: 1;
-  transform: translateX(-20%) scale(.8);
+  transform: translateX(-15%) scale(.8);
 }
 
 .gallery__prev,
@@ -228,7 +228,7 @@ h3 {
 
 
 .employee-gallery .arrow {
-  background: rgba(245, 245, 245, 0.355);
+  background-color: #c5c5c55a;
   border: none;
   border-radius: 50%;
   display: flex;
@@ -249,12 +249,12 @@ h3 {
 
 .employee-gallery .left {
   position: absolute;
-  left: 0;
+  left: 20;
 }
 
 .employee-gallery .right {
   position: absolute;
-  right: 0;
+  right: 20;
 }
 
 .carousel {

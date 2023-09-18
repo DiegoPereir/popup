@@ -153,34 +153,52 @@ startAutoSlide();
 
 //MENU HAMBURGUER----------------------------------------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
-  var menuIcon = document.getElementById("menuIcon");
-  var menuMobile = document.querySelector(".items-menu-mobile .menu-mobile");
+    var menuIcon = document.getElementById("menuIcon");
+    var menuMobile = document.querySelector(".items-menu-mobile .menu-mobile");
 
-  function toggleMenu() {
-      menuMobile.classList.toggle("show");
-      if (menuMobile.classList.contains("show")) {
-          menuIcon.classList.remove('fa-bars');
-          menuIcon.classList.add('fa-times');
-          document.body.style.overflow = 'hidden';
-      } else {
-          menuIcon.classList.remove('fa-times');
-          menuIcon.classList.add('fa-bars');
-          document.body.style.overflow = 'auto';
-      }
-  }
+    function toggleMenu() {
+        menuMobile.classList.toggle("show");
+        if (menuMobile.classList.contains("show")) {
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            document.body.style.overflow = 'hidden';
+        } else {
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+            document.body.style.overflow = 'auto';
+        }
+    }
 
-  menuIcon.addEventListener("click", toggleMenu);
+    menuIcon.addEventListener("click", toggleMenu);
 
-  var menuMobileLinks = menuMobile.querySelectorAll("a");
-  menuMobileLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-          menuMobile.classList.remove("show");
-          menuIcon.classList.remove('fa-times');
-          menuIcon.classList.add('fa-bars');
-          document.body.style.overflow = 'auto';
-      });
-  });
+    var menuMobileLinks = menuMobile.querySelectorAll("a");
+    menuMobileLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            menuMobile.classList.remove("show");
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
+    // Adicionando o ajuste de rolagem para links âncora
+    var anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            var targetId = this.getAttribute('href').slice(1);
+            var targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: targetPosition - 130, // Ajuste de 90px
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
 });
+
 
 //MENSAGEM ZAP ---------------------------------------------------------------------------------------------------------------------------------------------------
 let inputText = document.querySelector("name");
