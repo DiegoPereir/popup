@@ -943,7 +943,7 @@ button#enviar:hover {
   }
 
   .carousel-inner {
-    max-width: 60vw;
+    max-width: 55%;
   }
 
   .box-diferenciais {
@@ -1127,7 +1127,7 @@ button#enviar:hover {
 @media (max-width: 480px) {
 
   .carousel-inner {
-    max-width: 90vw;
+    max-width: 85%;
   }
 
   #medias-sociais a {
