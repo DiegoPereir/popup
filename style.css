@@ -1125,10 +1125,11 @@ button#enviar:hover {
 }
 
 @media (max-width: 480px) {
-  
+
   .carousel-inner {
     max-width: 90vw;
   }
+
   #medias-sociais a {
     padding: 10px !important;
   }
