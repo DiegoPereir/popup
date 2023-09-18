@@ -416,7 +416,6 @@ footer .redesSociais .text-white-icon:hover {
 .logo-text {
   font-size: 40px;
   font-weight: bold;
-
 }
 
 .items-menu {
@@ -1064,9 +1063,6 @@ button#enviar:hover {
     align-items: center !important;
   }
 
-  .carousel-inner {
-    max-width: 90vw;
-  }
 
   #medias-sociais a img {
     width: 30px !important;
@@ -1129,6 +1125,10 @@ button#enviar:hover {
 }
 
 @media (max-width: 480px) {
+  
+  .carousel-inner {
+    max-width: 90vw;
+  }
   #medias-sociais a {
     padding: 10px !important;
   }
