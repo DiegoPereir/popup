@@ -1,3 +1,30 @@
+$(document).ready(function() {
+    function reorderCarousel() {
+        if ($(window).width() > 1080) {
+            $('.carousel-control-prev').click(function() {
+                let firstItem = $('.carousel-wrapper .carousel-item:first-child').detach();
+                $('.carousel-wrapper').append(firstItem);
+            });
+
+            $('.carousel-control-next').click(function() {
+                let lastItem = $('.carousel-wrapper .carousel-item:last-child').detach();
+                $('.carousel-wrapper').prepend(lastItem);
+            });
+        }
+    }
+
+    reorderCarousel();
+    $(window).resize(reorderCarousel);
+});
+
+
+
+
+
+
+
+
+
 //COLOCAR UM BG NO MENU DEPOIS DE 90PX SCROLADOS PARA BAIXO------------------------------------------------------------------------------------------------------
 window.addEventListener('scroll', function() {
   var menu = document.querySelector('.menu');

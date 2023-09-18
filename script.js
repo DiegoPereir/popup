@@ -203,3 +203,43 @@ function enviarMensagemWhatsApp() {
 
   window.open(urlWhatsApp, "_blank");
 }
+
+//SLIDER DE POSTS ----------------------------------------------------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+    var stream = document.querySelector('.gallery__stream');
+    var items = document.querySelectorAll('.gallery__item');
+
+    var prev = document.querySelector('.gallery__prev');
+    var next = document.querySelector('.gallery__next');
+    var cooldown = false; // Flag to check if cooldown is active
+
+    prev.addEventListener('click', function () {
+        if (!cooldown) {
+            stream.insertBefore(items[items.length - 1], items[0]);
+            items = document.querySelectorAll('.gallery__item');
+            activateCooldown();
+        }
+    });
+
+    next.addEventListener('click', function () {
+        if (!cooldown) {
+            stream.appendChild(items[0]);
+            items = document.querySelectorAll('.gallery__item');
+            activateCooldown();
+        }
+    });
+
+    function activateCooldown() {
+        cooldown = true;
+        setTimeout(function () {
+            cooldown = false;
+        }, 1000); // Cooldown duration of 1 second
+    }
+
+    // Set the carousel to move automatically every 1 second
+    setInterval(function() {
+        if (!cooldown) {
+            next.click(); // Simulate a click on the next button
+        }
+    }, 3000);
+});

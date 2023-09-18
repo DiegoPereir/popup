@@ -50,6 +50,124 @@ h3 {
   flex-wrap: wrap;
 }
 
+.gallery {
+  position: absolute;
+  top: 500px;
+  transform: translateY(-50%);
+  width: 80%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.gallery:before,
+.gallery:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 100%;
+  z-index: 3;
+}
+
+.gallery__stream {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__item {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  transition: 1s all ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 5px;
+}
+
+.gallery__item:nth-child(1) {
+  left: 0;
+  z-index: 1;
+  transform: translateX(-60%) scale(.8);
+}
+
+.gallery__item:nth-child(2) {
+  left: 0;
+  z-index: 2;
+  transform: translateX(-30%) scale(.8);
+}
+
+.gallery__item:nth-child(3) {
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%) scale(1);
+}
+
+.gallery__item:nth-child(4) {
+  left: 100%;
+  z-index: 2;
+  transform: translateX(-70%) scale(.8);
+}
+
+.gallery__item:nth-child(n+5) {
+  left: 100%;
+  z-index: 1;
+  transform: translateX(-20%) scale(.8);
+}
+
+.gallery__prev,
+.gallery__next {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 50%;
+  height: 100%;
+  transform: translateX(-50%) translateY(-50%) scale(.8);
+  cursor: pointer;
+}
+
+.gallery__prev {
+  left: 0;
+}
+
+.gallery__next {
+  left: 100%;
+}
+
+.bg-1 {
+  background-image: url(img/post-popupNovo.svg);
+}
+
+.bg-2 {
+  background-image: url(img/post_acerto.svg);
+}
+
+.bg-3 {
+  background-image: url(img/post-popup.svg);
+}
+
+.bg-4 {
+  background-image: url(img/post-planejamento.svg);
+}
+
+.bg-5 {
+  background-image: url(img/post-motivacao.svg);
+}
+
+.bg-6 {
+  background-image: url(img/post-oportunidades.svg);
+}
+
+.bg-7 {
+  background-image: url(img/post-indecisao.svg);
+}
+
+
 .employee-gallery {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -139,6 +257,9 @@ h3 {
   right: 0;
 }
 
+.carousel {
+  display: none !important;
+}
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -155,7 +276,7 @@ h3 {
 
 .carousel-inner {
   width: 100%;
-  max-width: 800px;
+  max-width: 500px;
   height: auto;
   border-radius: 10px;
   overflow: hidden;
@@ -188,7 +309,7 @@ h3 {
 
 .cards-posts-inner {
   width: 100%;
-  max-width: 800px;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
   overflow: hidden;
@@ -567,7 +688,7 @@ section.contato {
   text-align: center;
 }
 
-section.contato h3{
+section.contato h3 {
   color: #989898;
 }
 
@@ -741,10 +862,19 @@ button#enviar:hover {
 
 
 @media (max-width: 1080px) {
+  .carousel {
+    display: flex !important;
+  }
+
+  .gallery {
+    display: none !important;
+  }
+
   .cards-posts-inner:nth-child(1),
   .cards-posts-inner:nth-child(3) {
-  display: none;
-}
+    display: none;
+  }
+
   .lista-beneficios p {
     flex-direction: column;
     padding-bottom: 10%;

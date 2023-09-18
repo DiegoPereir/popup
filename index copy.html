@@ -6,6 +6,7 @@
     <link rel="icon" href="img/logo-popup.svg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,6 +26,14 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- JS, Popper.js e jQuery do Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <link href="style copy.css" rel="stylesheet" />
     <style>
@@ -34,245 +43,408 @@
 </head>
 
 <body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <section class="main">
-        <div class="center">
-            <div class="menu">
-                <div class="col-md-4 d-flex justify-content-start align-items-center" style="width: 50%;">
-                    <a href="/"><span class="logo-text" style="color: #52E9D6; font-weight: bold;">pop</span><span
-                            class="logo-text" style="color: #94FF49; font-weight: bold;">up</span></a>
-                </div>
-                <div class="items-menu">
-                    <a href="#">Início</a>
-                    <a href="#pq-nos">Porque nós?</a>
-                    <a href="#depoimentos">Depoimentos</a>
-                    <a class="contact-btn" href="#contato">Entre em contato</a>
-                </div>
-                <div class="items-menu-mobile" id="itens-menu-mobile">
-                    <i class="fa fa-bars" aria-hidden="true" id="menuIcon"></i>
-                    <div class="menu-mobile">
+        .gallery {
+            position: absolute;
+            top: 500px;
+            transform: translateY(-50%);
+            width: 80%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+
+        .gallery:before,
+        .gallery:after {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            z-index: 3;
+        }
+
+        .gallery__stream {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery__item {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            transition: 1s all ease;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 5px;
+        }
+
+        .gallery__item:nth-child(1) {
+            left: 0;
+            z-index: 1;
+            transform: translateX(-60%) scale(.8);
+        }
+
+        .gallery__item:nth-child(2) {
+            left: 0;
+            z-index: 2;
+            transform: translateX(-30%) scale(.8);
+        }
+
+        .gallery__item:nth-child(3) {
+            left: 50%;
+            z-index: 4;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(4) {
+            left: 100%;
+            z-index: 2;
+            transform: translateX(-70%) scale(.8);
+        }
+
+        .gallery__item:nth-child(n+5) {
+            left: 100%;
+            z-index: 1;
+            transform: translateX(-20%) scale(.8);
+        }
+        .gallery__prev,
+        .gallery__next {
+            position: absolute;
+            top: 50%;
+            z-index: 4;
+            width: 50%;
+            height: 100%;
+            transform: translateX(-50%) translateY(-50%) scale(.8);
+            cursor: pointer;
+        }
+
+        .gallery__prev {
+            left: 0;
+        }
+
+        .gallery__next {
+            left: 100%;
+        }
+
+        .bg-1 {
+            background-image: url(img/post-popupNovo.svg);
+        }
+
+        .bg-2 {
+            background-image: url(img/post_acerto.svg);
+        }
+
+        .bg-3 {
+            background-image: url(img/post-popup.svg);
+        }
+
+        .bg-4 {
+            background-image: url(img/post-planejamento.svg);
+        }
+
+        .bg-5 {
+            background-image: url(img/post-motivacao.svg);
+        }
+
+        .bg-6 {
+            background-image: url(img/post-oportunidades.svg);
+        }
+
+        .bg-7 {
+            background-image: url(img/post-indecisao.svg);
+        }
+
+        .carousel {
+            display: none !important;
+        }
+
+        @media (max-width: 1080px) {
+            .carousel {
+                display: flex !important;
+            }
+
+            .gallery {
+                display: none !important;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <section class="main">
+            <div class="center">
+                <div class="menu">
+                    <div class="col-md-4 d-flex justify-content-start align-items-center" style="width: 50%;">
+                        <a href="/"><span class="logo-text" style="color: #52E9D6; font-weight: bold;">pop</span><span
+                                class="logo-text" style="color: #94FF49; font-weight: bold;">up</span></a>
+                    </div>
+                    <div class="items-menu">
                         <a href="#">Início</a>
                         <a href="#pq-nos">Porque nós?</a>
                         <a href="#depoimentos">Depoimentos</a>
                         <a class="contact-btn" href="#contato">Entre em contato</a>
                     </div>
-                </div>
-            </div>
-
-            <div id="carouselExampleRide" class="carousel slide">
-                <div class="cards-posts-inner">
-                    <div class="cards-posts-item active">
-                        <img src="img/post-indecisao.svg" class="d-block w-100 cards-posts-image"
-                            alt="Imagem de Indecisão">
-                    </div>
-                </div>
-
-                <div class="carousel-inner">
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
-                        data-bs-slide="prev">
-                        <div class="bg-circle">
-                            <span aria-hidden="true" style="color: rgba(91, 91, 91, 0.619);">&#10094;</span>
+                    <div class="items-menu-mobile" id="itens-menu-mobile">
+                        <i class="fa fa-bars" aria-hidden="true" id="menuIcon"></i>
+                        <div class="menu-mobile">
+                            <a href="#">Início</a>
+                            <a href="#pq-nos">Porque nós?</a>
+                            <a href="#depoimentos">Depoimentos</a>
+                            <a class="contact-btn" href="#contato">Entre em contato</a>
                         </div>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
+                    </div>
+                </div>
 
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
-                        data-bs-slide="next">
-                        <div class="bg-circle">
-                            <span aria-hidden="true" style="color: rgba(133, 133, 133, 0.477);">&#10095;</span>
+                <div class="gallery">
+                    <div class="gallery__prev"></div>
+                    <div class="gallery__next"></div>
+                    <div class="gallery__stream">
+                        <div class="gallery__item bg-1"></div>
+                        <div class="gallery__item bg-2"></div>
+                        <div class="gallery__item bg-3"></div>
+                        <div class="gallery__item bg-4"></div>
+                        <div class="gallery__item bg-5"></div>
+                        <div class="gallery__item bg-6"></div>
+                        <div class="gallery__item bg-7"></div>
+                    </div>
+                </div>
+
+                <div id="carouselExampleRide" class="carousel slide">
+                    <div class="carousel-inner">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
+                            data-bs-slide="prev">
+                            <div class="bg-circle">
+                                <span aria-hidden="true" style="color: rgba(91, 91, 91, 0.619);">&#10094;</span>
+                            </div>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide"
+                            data-bs-slide="next">
+                            <div class="bg-circle">
+                                <span aria-hidden="true" style="color: rgba(133, 133, 133, 0.477);">&#10095;</span>
+                            </div>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <div class="carousel-item active">
+                            <img src="img/post-indecisao.svg" class="d-block w-100 carousel-image"
+                                alt="Imagem de Indecisão">
                         </div>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    <div class="carousel-item active">
-                        <img src="img/post-indecisao.svg" class="d-block w-100 carousel-image"
-                            alt="Imagem de Indecisão">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/post-motivacao.svg" class="d-block w-100 carousel-image"
-                            alt="Imagem de Motivação">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/post-oportunidades.svg" class="d-block w-100 carousel-image"
-                            alt="Imagem de Oportunidades">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/post-planejamento.svg" class="d-block w-100 carousel-image"
-                            alt="Imagem de Planejamento">
+                        <div class="carousel-item">
+                            <img src="img/post-motivacao.svg" class="d-block w-100 carousel-image"
+                                alt="Imagem de Motivação">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/post-oportunidades.svg" class="d-block w-100 carousel-image"
+                                alt="Imagem de Oportunidades">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/post-planejamento.svg" class="d-block w-100 carousel-image"
+                                alt="Imagem de Planejamento">
+                        </div>
                     </div>
                 </div>
 
-                <div class="cards-posts-inner">
-                    <div class="cards-posts-item active">
-                        <img src="img/post-indecisao.svg" class="d-block w-100 cards-posts-image"
-                            alt="Imagem de Indecisão">
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var stream = document.querySelector('.gallery__stream');
+                        var items = document.querySelectorAll('.gallery__item');
+
+                        var prev = document.querySelector('.gallery__prev');
+                        prev.addEventListener('click', function () {
+                            stream.insertBefore(items[items.length - 1], items[0]);
+                            items = document.querySelectorAll('.gallery__item');
+                        });
+
+                        var next = document.querySelector('.gallery__next');
+                        next.addEventListener('click', function () {
+                            stream.appendChild(items[0]);
+                            items = document.querySelectorAll('.gallery__item');
+                        });
+                    });
+                </script>
+            </div>
+        </section>
+
+        <section class="porque-nos" id="pq-nos">
+            <div class="center">
+                <h2>Por Que Nós ?</h2>
+                <p>Uma experiência incrível para seus clientes, resultados espetaculares para sua empresa.</p>
+
+                <div class="diferenciais">
+                    <div class="box-diferenciais">
+                        <img src="img/ICONE1.png" />
+                        <h3>Planejamento impecável</h3>
+                        <p>Conte com a Agência <b>PoPuP</b> como sua parceira no planejamento de seus projetos,
+                            conteúdos,
+                            campanhas, estratégias. Nossos profissionais altamente qualificados estão preparados para
+                            qualquer desafio.</p>
                     </div>
+                    <div class="box-diferenciais">
+                        <img src="img/ICONE2.png" />
+                        <h3>Pague pelos resultados</h3>
+                        <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade
+                            de
+                            ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua
+                            necessidade.
+                        </p>
+                    </div>
+                    <div class="box-diferenciais">
+                        <img src="img/ICONE3.png" />
+                        <h3>Suporte e acompanhamento</h3>
+                        <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade
+                            de
+                            ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua
+                            necessidade.
+                        </p>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="porque-nos" id="pq-nos">
-        <div class="center">
-            <h2>Por Que Nós ?</h2>
-            <p>Uma experiência incrível para seus clientes, resultados espetaculares para sua empresa.</p>
 
-            <div class="diferenciais">
-                <div class="box-diferenciais">
-                    <img src="img/ICONE1.png" />
-                    <h3>Planejamento impecável</h3>
-                    <p>Conte com a Agência <b>PoPuP</b> como sua parceira no planejamento de seus projetos, conteúdos,
-                        campanhas, estratégias. Nossos profissionais altamente qualificados estão preparados para
-                        qualquer desafio.</p>
-                </div>
-                <div class="box-diferenciais">
-                    <img src="img/ICONE2.png" />
-                    <h3>Pague pelos resultados</h3>
-                    <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de
-                        ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.
-                    </p>
-                </div>
-                <div class="box-diferenciais">
-                    <img src="img/ICONE3.png" />
-                    <h3>Suporte e acompanhamento</h3>
-                    <p>Aqui você paga de acordo com o retorno que ganha em cada campanha. Não deixe a oportunidade de
-                        ter melhores resultados para amanhã. Entre em contato e vamos conversar sobre sua necessidade.
-                    </p>
-                </div>
 
+
+        <h2 style="margin: 5% 0 0 0; font-weight: bold;">Nossa Equipe De Profissionais</h2>
+        <section class="employee-gallery">
+            <button class="arrow left" onclick="move(-1)">&#10094;</button>
+            <div class="employee-slider">
+                <div class="employee-card"><img src="img/equipe-felipe.svg" alt="Funcionário 1"></div>
+                <div class="employee-card"><img src="img/equipe-felipeGoncalves.svg" alt="Funcionário 2"></div>
+                <div class="employee-card"><img src="img/equipe-isvy.svg" alt="Funcionário 3"></div>
+                <div class="employee-card"><img src="img/equipe-jphn.svg" alt="Funcionário 4"></div>
+                <div class="employee-card"><img src="img/equipe-julia.svg" alt="Funcionário 5"></div>
+                <div class="employee-card"><img src="img/equipe-rafaela.svg" alt="Funcionário 6"></div>
+                <div class="employee-card"><img src="img/equipe-rayele.svg" alt="Funcionário 7"></div>
+                <div class="employee-card"><img src="img/equipe-valdeci.svg" alt="Funcionário 8"></div>
+                <div class="employee-card"><img src="img/equipe-valniele.svg" alt="Funcionário 9"></div>
+                <div class="employee-card"><img src="img/equipe-willian.svg" alt="Funcionário 10"></div>
             </div>
-        </div>
-    </section>
+            <button class="arrow right" onclick="move(1)">&#10095;</button>
+        </section>
+        <section class="Marcas">
 
+            <h2>Nossas redes sociais!</h2>
+            <h3>Caso queira tirar alguams duvidas ou ver nossos projetos anteriores</h3>
+            <div id="medias-sociais">
+                <a href="https://www.behance.net/agenciapopup" target="_blank">
+                    <img src="/img/behance.svg" alt="Behance" />
+                </a>
 
+                <a href="https://www.instagram.com/agenciapopup/" target="_blank">
+                    <img src="img/insta.webp" alt="Instagram">
+                </a>
 
+                <a href="https://www.linkedin.com/company/ag%C3%AAncia-popup/" target="_blank">
+                    <img src="img/linkedin.png" alt="linkedin">
+                </a>
 
-    <h2 style="margin: 5% 0 0 0; font-weight: bold;">Nossa Equipe De Profissionais</h2>
-    <section class="employee-gallery">
-        <button class="arrow left" onclick="move(-1)">&#10094;</button>
-        <div class="employee-slider">
-            <div class="employee-card"><img src="img/equipe-felipe.svg" alt="Funcionário 1"></div>
-            <div class="employee-card"><img src="img/equipe-felipeGoncalves.svg" alt="Funcionário 2"></div>
-            <div class="employee-card"><img src="img/equipe-isvy.svg" alt="Funcionário 3"></div>
-            <div class="employee-card"><img src="img/equipe-jphn.svg" alt="Funcionário 4"></div>
-            <div class="employee-card"><img src="img/equipe-julia.svg" alt="Funcionário 5"></div>
-            <div class="employee-card"><img src="img/equipe-rafaela.svg" alt="Funcionário 6"></div>
-            <div class="employee-card"><img src="img/equipe-rayele.svg" alt="Funcionário 7"></div>
-            <div class="employee-card"><img src="img/equipe-valdeci.svg" alt="Funcionário 8"></div>
-            <div class="employee-card"><img src="img/equipe-valniele.svg" alt="Funcionário 9"></div>
-            <div class="employee-card"><img src="img/equipe-willian.svg" alt="Funcionário 10"></div>
-        </div>
-        <button class="arrow right" onclick="move(1)">&#10095;</button>
-    </section>
-    <section class="Marcas">
-
-        <h2>Nossas redes sociais!</h2>
-        <h3>Caso queira tirar alguams duvidas ou ver nossos projetos anteriores</h3>
-        <div id="medias-sociais">
-            <a href="https://www.behance.net/agenciapopup" target="_blank">
-                <img src="/img/behance.svg" alt="Behance" />
-            </a>
-
-            <a href="https://www.instagram.com/agenciapopup/" target="_blank">
-                <img src="img/insta.webp" alt="Instagram">
-            </a>
-
-            <a href="https://www.linkedin.com/company/ag%C3%AAncia-popup/" target="_blank">
-                <img src="img/linkedin.png" alt="linkedin">
-            </a>
-
-            <a href="https://api.whatsapp.com/send?phone=558892467109" target="_blank">
-                <img src="img/wpp.png" alt="whatsapp">
-            </a>
-        </div>
-    </section>
-    <section class="beneficios">
-        <div style="max-width: 1280px; padding: 0; border-radius: 10px; overflow: hidden; box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);"
-            class="center">
-            <div class="lista-beneficios">
-                <h2>Benefícios para Você</h2>
-                <br />
-                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
-                        desempenho do seu projeto ou campanha.</span></p>
-                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
-                        desempenho do seu projeto ou campanha.</span></p>
-                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
-                        desempenho do seu projeto ou campanha.</span></p>
-                <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
-                        desempenho do seu projeto ou campanha.</span></p>
-                <!-- <a href="#contato">Entrar em contato</a> -->
+                <a href="https://api.whatsapp.com/send?phone=558892467109" target="_blank">
+                    <img src="img/wpp.png" alt="whatsapp">
+                </a>
             </div>
-            <div class="img-beneficios">
-                <img src="img/post-popupNovo.svg" />
+        </section>
+        <section class="beneficios">
+            <div style="max-width: 1280px; padding: 0; border-radius: 10px; overflow: hidden; box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);"
+                class="center">
+                <div class="lista-beneficios">
+                    <h2>Benefícios para Você</h2>
+                    <br />
+                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                            desempenho do seu projeto ou campanha.</span></p>
+                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                            desempenho do seu projeto ou campanha.</span></p>
+                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                            desempenho do seu projeto ou campanha.</span></p>
+                    <p><img src="img/checklist.svg" alt="checklist"><span>Garantia de resultados, pague de acordo com o
+                            desempenho do seu projeto ou campanha.</span></p>
+                    <!-- <a href="#contato">Entrar em contato</a> -->
+                </div>
+                <div class="img-beneficios">
+                    <img src="img/post-popupNovo.svg" />
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="Contato" id="contato">
-        <h2>Entre Em contato</h2>
-        <h3>E faça agora seu projeto de marketing conosco</h3>
-        <div style="max-width: 900px;" class="center">
-            <form action="#" onsubmit="enviarMensagemWhatsApp(); return false;" style="margin: 0 5%;">
-                <div class="fields">
-                    <div class="field name">
-                        <input type="text" id="nome" placeholder="Nome" required>
+        <section class="Contato" id="contato">
+            <h2>Entre Em contato</h2>
+            <h3>E faça agora seu projeto de marketing conosco</h3>
+            <div style="max-width: 900px;" class="center">
+                <form action="#" onsubmit="enviarMensagemWhatsApp(); return false;" style="margin: 0 5%;">
+                    <div class="fields">
+                        <div class="field name">
+                            <input type="text" id="nome" placeholder="Nome" required>
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <div class="field email">
-                        <input type="email" id="email" placeholder="Email" required>
+                    <div class="field">
+                        <div class="field email">
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="field proposta">
+                            <textarea id="proposta" placeholder="Proposta..." required></textarea>
+                        </div>
+                        <div class="field textarea">
+                            <textarea id="mensagem" cols="10" rows="2" placeholder="Escrever...." required></textarea>
+                        </div>
+                        <div class="button">
+                            <button type="submit" id="enviar">Enviar</button>
+                        </div>
                     </div>
-                    <div class="field proposta">
-                        <textarea id="proposta" placeholder="Proposta..." required></textarea>
-                    </div>
-                    <div class="field textarea">
-                        <textarea id="mensagem" cols="10" rows="2" placeholder="Escrever...." required></textarea>
-                    </div>
-                    <div class="button">
-                        <button type="submit" id="enviar">Enviar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-
-
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <div class="row">
-                <!-- Logo Column -->
-                <!-- Logo Column -->
-                <div class="col-md-4 d-flex justify-content-center align-items-center" style="order: 1;">
-                    <a href="/"><span class="logo-text" style="color: #52E9D6; font-weight: bold;">pop</span><span
-                            class="logo-text" style="color: #94FF49; font-weight: bold;">up</span></a>
-                </div>
-
-                <!-- Copyright Column -->
-                <div class="col-md-4 d-flex justify-content-center align-items-end"
-                    style="color: white;white-space: nowrap; order: 2;">
-                    <p>&copy; 2023 PoPuP | Todos os direitos reservados </p>
-                </div>
-
-                <!-- Social Media Column -->
-                <div class="redesSociais col-md-4 d-flex justify-content-end align-items-center" style="order: 3;">
-                    <a href="https://www.behance.net/agenciapopup" class="text-white-icon"><i class="fab fa-behance"
-                            style="font-size: 24px;"></i></a>
-                    <a href="https://www.instagram.com/agenciapopup/" class="text-white-icon"><i
-                            class="fab fa-instagram" style="font-size: 24px;"></i></a>
-                    <a href="https://www.linkedin.com/company/ag%C3%AAncia-popup/" class="text-white-icon"><i
-                            class="fab fa-linkedin-in" style="font-size: 24px;"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=558892467109" class="text-white-icon"><i
-                            class="fab fa-whatsapp" style="font-size: 24px;"></i></a>
-                </div>
-
-
-
+                </form>
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <script src="jquery.js"></script>
-    <script src="slick.min.js"></script>
-    <script src="script copy.js"></script>
-</body>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo Column -->
+                    <!-- Logo Column -->
+                    <div class="col-md-4 d-flex justify-content-center align-items-center" style="order: 1;">
+                        <a href="/"><span class="logo-text" style="color: #52E9D6; font-weight: bold;">pop</span><span
+                                class="logo-text" style="color: #94FF49; font-weight: bold;">up</span></a>
+                    </div>
+
+                    <!-- Copyright Column -->
+                    <div class="col-md-4 d-flex justify-content-center align-items-end"
+                        style="color: white;white-space: nowrap; order: 2;">
+                        <p>&copy; 2023 PoPuP | Todos os direitos reservados </p>
+                    </div>
+
+                    <!-- Social Media Column -->
+                    <div class="redesSociais col-md-4 d-flex justify-content-end align-items-center" style="order: 3;">
+                        <a href="https://www.behance.net/agenciapopup" class="text-white-icon"><i class="fab fa-behance"
+                                style="font-size: 24px;"></i></a>
+                        <a href="https://www.instagram.com/agenciapopup/" class="text-white-icon"><i
+                                class="fab fa-instagram" style="font-size: 24px;"></i></a>
+                        <a href="https://www.linkedin.com/company/ag%C3%AAncia-popup/" class="text-white-icon"><i
+                                class="fab fa-linkedin-in" style="font-size: 24px;"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=558892467109" class="text-white-icon"><i
+                                class="fab fa-whatsapp" style="font-size: 24px;"></i></a>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </footer>
+
+        <script src="jquery.js"></script>
+        <script src="slick.min.js"></script>
+        <script src="script copy.js"></script>
+    </body>
 
 </html>
